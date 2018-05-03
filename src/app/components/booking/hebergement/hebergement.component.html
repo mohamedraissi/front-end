@@ -1,0 +1,103 @@
+<div class="row mx-0" >
+    <div class="col-lg-7 mt-3 text-center pr-0">
+        <app-navbarbooking></app-navbarbooking>
+        <div class="row mt-3">
+            <div class="col-md-3">
+                    <div class="card my-2" *ngFor='let list of listSelect ;let  i= index' (click)="selectHotelVille(list._id)" [ngClass]="{'active':selectedItemId ==list._id}" >
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3 ">
+                                <img src="http://localhost:5000/upload/{{list.image}}" alt="" style="width:300%">
+                                </div>
+                                <div class="col-9">
+                                    <p class="">{{list.nom}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4 my-1" *ngFor="let h of hotel">
+                        <div class="card h-100">
+                        <!--Card image-->
+                        <img class="img-fluid" src="http://localhost:5000/upload/{{h.image}}"  style="height:100px" (click)="getHotelModal(h)" alt="Card image cap" data-toggle="modal" data-target="#basicExample" (click)="fluid.show()"> 
+                        <!--Card content-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <div class="position-relative mb-3" *ngIf="h.nbre_etoile!=0">
+                                <img src="../../../../assets/{{h.nbre_etoile}}e.png" class="w-100  " alt="">
+                            </div>
+                            <h6 class="card-title font-weight-bold ">{{h.titre}}</h6>
+                            
+                            
+                            <!--Text-->
+                        </div>
+                    </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 col-sm-12 direction" style="padding:0" >
+            <agm-map [ngStyle]="{'height':this.map}" [latitude]="latu"  #gm [longitude]="long"  [fullscreenControl]="true" [fullscreenControlOptions]="screenOptions">
+                <agm-marker  *ngFor="let hotel of hotel"  [iconUrl]="'../../../../assets/'+hotel.type_hebergement+'.png'" [latitude]="hotel.lat" [longitude]="hotel.long" (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+                    <agm-info-window #infoWindow>
+                        <strong>{{hotel.nom}}</strong>
+                        <p>{{hotel.description}}</p>
+                    </agm-info-window>
+                </agm-marker>
+            </agm-map>
+    </div>
+</div>
+
+<div mdbModal #fluid="mdb-modal" class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-full-height modal-right" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="myModalLabel">{{this.selectedHotel.titre}}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="fluid.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente magnam, sunt, ea dolore
+                    eum quod. Minima fugiat enim aut soluta est reprehenderit reiciendis quos, qui, amet
+                    possimus laborum assumenda voluptate.
+                </p>
+
+                <ul class="list-group z-depth-0">
+                    <li class="list-group-item justify-content-between">
+                        Cras justo odio
+                        <span class="badge badge-primary badge-pill">14</span>
+                    </li>
+                    <li class="list-group-item justify-content-between">
+                        Dapibus ac facilisis in
+                        <span class="badge badge-primary badge-pill">2</span>
+                    </li>
+                    <li class="list-group-item justify-content-between">
+                        Morbi leo risus
+                        <span class="badge badge-primary badge-pill">1</span>
+                    </li>
+                    <li class="list-group-item justify-content-between">
+                        Cras justo odio
+                        <span class="badge badge-primary badge-pill">14</span>
+                    </li>
+                    <li class="list-group-item justify-content-between">
+                        Dapibus ac facilisis in
+                        <span class="badge badge-primary badge-pill">2</span>
+                    </li>
+                    <li class="list-group-item justify-content-between">
+                        Morbi leo risus
+                        <span class="badge badge-primary badge-pill">1</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary waves-light" data-dismiss="modal" (click)="fluid.hide()" mdbWavesEffect>Close</button>
+                <button type="button" class="btn btn-primary waves-light" mdbWavesEffect (click)="reserveBooking(this.selectedHotel._id,fluid)">Reserver</button>
+            </div>
+        </div>
+    </div>
+</div>
+                

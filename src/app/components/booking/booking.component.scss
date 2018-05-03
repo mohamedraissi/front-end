@@ -1,0 +1,32 @@
+.date-g {
+    width: 100%;
+    display: inline-block;
+}
+.rect-date {
+    position: relative;
+    top: 0.85em !important;
+    background-color: white;
+    border: 1px solid #eaeaea;
+    border-radius: 3%;
+    width: 90%;
+    height: 130px !important;
+    position: relative;
+    padding: 15% 6%;
+    margin-bottom: 5%;
+    font-size: 0.8em;
+}
+.ville-iti {
+    cursor: move;
+}
+.card-hover:hover{
+    cursor: pointer;
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.19), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.btn[class*="btn-outline-"] {
+     padding-top: 0 !important;
+     padding-bottom: 0 !important ;
+}
+.btn{
+    padding: 0 6px;
+    margin:0;
+}

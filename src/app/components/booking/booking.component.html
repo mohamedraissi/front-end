@@ -1,0 +1,111 @@
+<div class="row mx-0" >
+    <div class="col-lg-7 mt-3 text-center pr-0">
+        <app-navbarbooking></app-navbarbooking>
+                <div class="row">
+                    <div class="col-md-4 block-overflow ">
+                            <div class="card bg-white text-center z-depth-2 mb-3 card-hover"  *ngFor="let ville of villes"  (click)="addRoute(ville)">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-3">
+                                            <img src="http://localhost:5000/upload/{{ville.image}}" alt="">
+                                        </div>
+                                        <div class="col-9">
+                                            <p class=" h6">{{ville.nom}}</p>
+                                            
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
+                    </div>
+                    
+                    <div class="col-md-8 ">
+                        <h4>CRÉEZ VOTRE ITINÉRAIRE </h4>
+                        <div class="row">
+                            <p class="col">Nombre de jours du voyage :{{this._bt.days}}</p>
+                            <p class="col">Nombre de jours restants à planifier :{{this._bt._rd}} </p>
+                        </div>
+                        <div class="block-iti">
+                        <div class="card blockD card-hover">
+                            <div class="card-body">
+                              <div class="row mt-4">
+                              <div class="col-12">
+                                  <p class=" h6">Départ: {{this._bt.origin}}</p>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                        <div class="row pr-3 mb-2" *ngIf="isRouteActive"  >
+                            <div class="col-4">
+                                <a class="btn-floating yellow waves-light" mdbWavesEffect>
+                                    <i class="fa fa-car black-text" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        <div class="col-8" id="total0">    
+                        </div>
+                        </div>
+                        <div *ngFor="let list of listSelect;let  i= index">
+                            <div class="row pr-3 mb-2"  >
+                            <div class="col-4 ">
+                                    <div class="card block-cal card-hover" [ngStyle]="{'height':this.bl}" >
+                                        <div class="card-body">
+                                            <span class="card-text" style="font-size:14px;">{{list.dateDepart}} <br>au <br>{{list.dateArrive}}</span>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-8 ">
+                                <div class="card blockD card-hover" [ngStyle]="{'height':this.bl}">
+                                  <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-3">
+                                        <img src="http://localhost:5000/upload/{{list.image}}" alt="">
+                                    </div>
+                                    <div class="col-9">
+                                        <i class="fa fa-times pull-right" aria-hidden="true"  (click)="removeRoute(i)"  ></i>
+                                        <p class=" h6" style="text-align:left;">{{list.nom}}</p>
+                                        <p class="" style="margin-top:-20px;text-align:left;">{{list.gouvernorat}} </p>
+                                        <p style="margin-top:-5px;" class="text-left">
+                                            <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="addDay(i)" mdbWavesEffect>+</button> 
+                                            <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="subDay(i)" mdbWavesEffect>-</button>
+                                            <span class="text-right"> 
+                                                {{list.days}}jour(s)/{{list.days}}nuit(s)
+                                            </span>
+                                        </p>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row pr-3 mb-2">
+                                    <div class="col-4">
+                                        <a class="btn-floating btn-xs indigo waves-light" mdbWavesEffect>
+                                            <i class="fa fa-car" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-8" id="total{{i+1}}">
+                                            
+                                    </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+    </div>
+    <div class="col-md-5 col-sm-12 direction" style="padding:0" >
+            <agm-map [ngStyle]="{'height':this.map}" [latitude]="latu" *ngIf="!isRouteActive" #gm [longitude]="long"  [fullscreenControl]="true" [fullscreenControlOptions]="screenOptions">
+                <agm-marker  *ngFor="let ville of villes" [iconUrl]="'http://localhost:5000/upload/'+ville.image" [latitude]="ville.lat" [longitude]="ville.long" (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+                    <agm-info-window #infoWindow>
+                        <strong>{{ville.nom}}</strong>
+                        <p>{{ville.description}}</p>
+                    </agm-info-window>
+                </agm-marker>
+            </agm-map>
+         <span *ngFor="let route of newRoute ;let last=last" >
+            <agm-map  [ngStyle]="{'height':this.map}" [latitude]="latu" #gm [longitude]="long"  [fullscreenControl]="true" [fullscreenControlOptions]="screenOptions" *ngIf="last && isRouteActive">   
+                <agm-google-map-directions  [origin]="this._bt.origin" [destination]="this._bt.origin" [waypoints]="listRoute" *ngIf="last"  ></agm-google-map-directions>
+            </agm-map>
+        </span>
+      </div>
+</div>
+
+

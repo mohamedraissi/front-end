@@ -1,0 +1,185 @@
+<!-- Main -->
+<div class="view intro hm-purple-light" style="">
+  <div class="full-bg-img flex-center ">
+      <div class="text-center container white-text wow fadeInUp mt180" >
+          <h3 class="font-weight-bold">Construisez vos itinéraires, réservez vos hébergements, organisez vos visites, 
+            téléchargez votre carnet de voyage personnalisé</h3>
+      </div>
+  </div>
+</div>
+<div class="flex-center container bg-white hidden-md-down rounded mt350" >
+<form class="form-inline text-center" [formGroup]='villeForm' autocomplete="new-password" #resForm="ngForm" (submit)="onBookingSubmit(resForm)" novalidate >
+<div class="md-form pt-4">
+    <input type="text" class="form-control col mr-5 input-header" id="defaultForm-email" formControlName='search' [(value)]="bt.origin " (keyup)="toggeleDropDown()" placeholder=" Destination" name="Destination">
+    <label for="defaultForm-email"></label>
+    <div clickOutside  *ngIf="this.showDropDown" >
+        <div  class="ville-container-dropdown">
+            <div *ngFor="let v of ville | searchFilter: getSearchValue()" (click)="selectValue(v)" class="ville">
+                {{v}}
+             </div>
+        </div>
+        
+    </div>
+</div>
+<div class="md-form pt-4 ">
+    <input type="date" class="form-control col mr-3" id="depart"  name="depart" style="width:150px;" formControlName='depart' [(value)]="bt.depart">
+    <label for="arrive" class="">Départ</label>
+</div>
+<div class="md-form pt-4 ">
+    <input type="date" class="form-control col" id="arrive"  name="arrive" formControlName='arrive' [(value)]="bt.arrive" >
+    <label for="depart" class="">Arrive</label>
+</div>
+<div class="md-form pt-4">
+        <input type="text" class="form-control col ml-5 input-header" id="voyaguer" formControlName='voyaguer' [(value)]="bt.voyageur" placeholder="Voyageur" name="voyageur" style="width:100px;">
+        
+    </div>
+<div class="md-form pt-4 ">
+    <button type="submit" class="btn purple-gradient btn-md waves-light" mdbRippleRadius>CRÉEZ VOTRE VOYAGE</button>
+</div>
+</form>
+</div>
+<!-- mobile -->
+<div class="flex-center container bg-white d-lg-none rounded mt350 z-depth-2" >
+    <form class="">
+    <div class="md-form pt-4">
+        <input type="text" class="form-control col mr-5 " id="defaultForm-emailm" placeholder=" Destination" name="email">
+        <label for="defaultForm-emailm">Your email</label>
+    </div>
+    <div class="md-form pt-4 ">
+        <input type="date" class="form-control col " id="arrivem"  name="arrive" >
+        <label for="arrivem" class="">Arrive</label>
+    </div>
+    <div class="md-form pt-4 ">
+        <input type="date" class="form-control col" id="departm"  name="depart">
+        <label for="departm" class="">Départ</label>
+    </div>
+    <div class="md-form pt-4">
+            <input type="text" class="form-control col" id="voyaguerm" placeholder="Voyageur" name="voyageur">
+            <label for="voyageurm" >Your email</label>
+        </div>
+    <div class="md-form pt-4 ">
+        <button type="button" class="btn purple-gradient btn-lg waves-light" mdbRippleRadius>CRÉEZ VOTRE VOYAGE</button>
+    </div>
+    </form>
+  </div>
+<!-- /.Main -->     
+<!--Main Navigation-->
+<div class="container bg-white mblock" >
+<div class="row text-center">
+    <h1 class="col-12">Facile à utiliser, facile à parcourir <hr></h1>
+    
+</div>
+<div class="row text-center mt-5 flex-center">
+     <div class="col-md-3 bg-hover py-5">
+         <i class="fa fa-map-o fa-3x"></i>
+         <h5 class="mt-3 font-weight-bold">
+                Obtenir un plan<br> 
+                personnalisé   <br>                  
+         </h5>
+         <p>
+            Un itinéraire complet jour par jour en 
+            fonction de vos préférences
+         </p>
+    </div>
+    <div class="col-md-3 py-5  bg-hover">
+        <i class="fa fa-calendar-o fa-3x"></i>
+        <h5 class="mt-3 font-weight-bold">
+                Personnaliser<br> <br>
+               
+        </h5>
+        <p>
+             Nous allons trouver les 
+            meilleurs itinéraires et les horaires   
+        </p>
+    </div>
+    <div class="col-md-3 bg-hover py-5">
+        <i class="fa fa-bed fa-3x"></i>
+        <h5 class="mt-3 font-weight-bold">Réserver <br> <br> </h5>
+        <p>
+            Faites votre choix parmi les meilleurs hôtels 
+            <br>
+        </p>
+    </div>
+     <div class="col-md-3 bg-hover py-5">
+         <i class="fa fa-address-card-o fa-3x "></i>
+         <h5 class="mt-3 font-weight-bold">Gérer<br> <br></h5>
+         <p>
+            Tout en un seul endroit. 
+            Tout le monde sur la même page.
+         </p>
+    </div>
+</div>
+</div>
+<div class="col-12 text-center mt-5">
+    <h1>Destinations <hr></h1>
+</div>
+<div class="row mt-5 mb-4 text-white" style="margin-right: 0px;
+margin-left: 0px;">
+<div class="col-lg-3 col-md-3 col-sm-12  text-center px-0">
+        <div class="img1-1">
+
+        </div>
+     <div class="bg-bl-o justify-content-center align-items-center" style="display:flex;flex-direction:column;"><h1>tunisie</h1></div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-12 img2-1 text-center">
+    <div class="bg-bl-o justify-content-center align-items-center" style="display:flex;flex-direction:column;"><h1>tunisie</h1></div>
+</div>
+<div class="col-lg-3 col-md-3  col-sm-12 img3-1 text-center">
+    <div class="bg-bl-o justify-content-center align-items-center" style="display:flex;flex-direction:column;"><h1>tunisie</h1></div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-12 img4-1 text-center">
+     <div class="bg-bl-o justify-content-center align-items-center" style="display:flex;flex-direction:column;"><h1>tunisie</h1></div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-12 img1-2 " >
+    <div class="bg-bl-o justify-content-center align-items-center" style="display:flex;flex-direction:column;" ><h1 >tunisie12</h1></div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-12 img2-2 text-center" >
+    <div class="bg-bl-o justify-content-center align-items-center" style="display:flex;flex-direction:column;"><h1>tunisie</h1></div>        
+</div>
+<div class="col-lg-3 col-md-3  col-sm-12 img3-2 d-flex text-center ">
+    <div class="bg-bl-o justify-content-center align-items-center" style="display:flex;flex-direction:column;"><h1>tunisie</h1></div>             
+</div>
+<div class="col-lg-3 col-md-3 col-sm-12 img4-2 text-center">
+    <div class="bg-bl-o justify-content-center align-items-center" style="display:flex;flex-direction:column;"><h1>tunisie</h1></div>      
+</div>
+<div class="col-12 text-center mt-5 mb-5">
+        <button type="button" class="btn btn-outline-secondary" mdbRippleRadius>gallery</button>
+</div>
+</div>
+
+
+<div class="container ">
+<div class="row mt-5 mb-5">
+    <div class="col-12">
+        <h1 class="text-center mb-5">Qui sommes nous?<hr></h1>
+    </div>
+    <div class="col-12 text-center" style="line-height:2.5">
+            L’idée est née lors de la conception de mon voyage au Vietnam. Je voulais m’occuper de tout, seul, pour construire grâce à Internet un voyage inoubliable, qui me ressemblait, tout en gardant le contrôle sur les coûts. Le constat fût simple :
+
+            Un budget limité ne me permettait pas de m’offrir les services des agences de voyage sur mesure mais je voulais maîtriser le choix des activités et des modes d’hébergement.
+            Une multiplicité de sites de voyages et d’acteurs devait être consultée pour trouver un itinéraire qui prenait en compte toutes mes envies.
+            Les informations devaient être vérifiées pour éviter les mauvaises surprises sur place (recoupement avec des agences en ligne, des agences locales, la maison du Vietnam ainsi que d’autres outils).
+            Un parcours du combattant : il a fallu un mois et demi pour concevoir un voyage en réservant les prestations auprès de plusieurs organismes.
+    </div>
+</div>
+<div class="row h-100 text-center mt-5 mb-5 py-5">
+    <div class="col-md-2 col-sm-12 align-self-center">
+        <img src="../../../assets/images/logo-singapore-airlines-png--4600.png" alt="" class="w-75">
+    </div>
+    <div class="col-md-2 col-sm-12 align-self-center">
+        <img src="../../../assets/images/turkish.png" alt="" class="w-75 mb-2">
+    </div>
+    <div class="col-md-2 col-sm-12 align-self-center">
+        <img src="../../../assets/images/Logo-Air-France.png" alt="" class="w-75 mb-2"> 
+    </div>
+    <div class="col-md-2 col-sm-12 align-self-center">
+        <img src="../../../assets/images/Qatar_Airways_Logo.png" alt="" class="w-75 mb-3">
+    </div>
+    <div class="col-md-2 col-sm-12 align-self-center">
+        <img src="../../../assets/images/emirates-airlines-logo-01.png" alt="" class="w-50 mb-3">
+    </div>
+    <div class="col-md-2 col-sm-12 align-self-center">
+        <img src="../../../assets/images/emirates-airlines-logo-01.png" alt="" class="w-50 mb-3">
+    </div>
+</div>
+</div>

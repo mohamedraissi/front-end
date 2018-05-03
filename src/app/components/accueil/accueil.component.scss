@@ -1,0 +1,170 @@
+.view {
+    background: url("../../../assets/images/travel.jpg")no-repeat center center;
+    background-size: cover;
+}  
+.intro {
+    min-height: 755px;
+    position: relative;
+    z-index: -1;
+}
+.input-header{
+    width: 200px;
+}
+.md-form .btn {
+    margin-bottom: 1rem;
+    margin-left: 1.5rem;
+}
+.mt180{
+    margin-top: -200px !important;
+}
+
+.mt350{
+    margin-top: -350px !important;
+}
+.bg-hover:hover{
+    color:white !important;
+    background: #8e35dc;
+    cursor: pointer;
+}
+.bg-hover i{
+    color:#8e35dc;
+}
+.bg-hover:hover i{
+    color:#ffffff;
+}
+.mblock{
+    margin-top:270px;
+}
+
+@media only screen and (max-width: 800px) {
+    .mblock{
+        margin-top:95px;
+    }
+}
+.img1-1{
+    background: url('../../../assets/images/salt-lake-250806_1920.jpg') no-repeat center center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+    height: 500px;
+    -webkit-transition: transform .4s ease;
+    -o-transition: transform .4s ease;
+    transition: transform .4s ease;
+    overflow: hidden;
+}
+
+
+.img2-1{
+    background: url('../../../assets/images/no-person-3270204_1920.jpg') no-repeat center center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+    height: 200px;
+}
+.img3-1{
+    background: url('../../../assets/images/tunisia-733606_1920.jpg') no-repeat center center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+    height: 500px;
+}
+.img4-1{
+    background: url('../../../assets/images/tunisia-733595_1920.jpg') no-repeat center center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+    height: 200px;
+}
+.img1-2{
+    background: url('../../../assets/images/tunisia-2471197_1920.jpg') no-repeat center center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+    height: 200px;
+}
+
+.img2-2{
+    background: url('../../../assets/images/africa-jade-thalasso-2259894_1920.jpg') no-repeat center center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+    height: 500px;
+    margin-top:-300px;
+}
+.img3-2{
+    background: url('../../../assets/images/no-person-3270204_1920.jpg') no-repeat center center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+    height: 200px;
+}
+.img4-2{
+    background: url('../../../assets/images/architecture-3195322_1280.jpg') no-repeat center center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+    height: 500px;
+    margin-top:-300px;
+}
+.bg-bl-o{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(46, 46, 46, 0.33);
+    height: 100%;
+    width:100%;
+}
+.bg-bl-o:hover h1 {
+    -webkit-transform: translateY(-20px);
+}
+.bg-bl-o h1 {
+    -webkit-transition: transform .4s ease;
+    -o-transition: transform .4s ease;
+    transition: transform .4s ease;
+    overflow: hidden;
+}
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    width: 60px;
+    border-top: 2px solid #8e35dc ;
+  }
+  @media only screen and (max-width:767px) {
+    .img2-2,.img4-2{
+        margin-top:0px;
+    }
+    .img2-1,.img4-1,.img1-2,.img3-2{
+        height: 500px;
+    }
+}
+.ville-container-dropdown{
+    position: absolute;
+    z-index: 1;
+    width: 82%;
+
+   height: 150px;
+    max-height: 200px;
+    background: white;
+    overflow: auto;
+    float: left;
+    
+}
+.ville{
+    padding: 12px;
+    font-family: sans-serif;
+    text-align: left;
+    cursor: pointer;
+}
+.ville:hover{
+    background: #8e35dc85
+}
+ 
