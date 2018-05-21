@@ -1,8 +1,11 @@
 <div class="row mx-0" >
     <div class="col-lg-7 mt-3 text-center pr-0">
         <app-navbarbooking></app-navbarbooking>
-        <div class="row mt-3">
+        <div class="row mt-3 pr-2">
             <div class="col-md-3">
+                <p class="col-md-12 font-weight-bold">
+                     Villes
+                </p>
                     <div class="card my-2" *ngFor='let list of listSelect ;let  i= index' (click)="selectHotelVille(list._id)" [ngClass]="{'active':selectedItemId ==list._id}" >
                         <div class="card-body">
                             <div class="row">
@@ -16,22 +19,53 @@
                         </div>
                     </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9 block-overflow">
                 <div class="row">
+                    <p class="col-md-12 font-weight-bold">
+                     Hébergements
+                    </p>
                     <div class="col-md-4 my-1" *ngFor="let h of hotel">
-                        <div class="card h-100">
+                        
+                        <div class="card h-100" >
                         <!--Card image-->
                         <img class="img-fluid" src="http://localhost:5000/upload/{{h.image}}"  style="height:100px" (click)="getHotelModal(h)" alt="Card image cap" data-toggle="modal" data-target="#basicExample" (click)="fluid.show()"> 
                         <!--Card content-->
                         <div class="card-body">
                             <!--Title-->
-                            <div class="position-relative mb-3" *ngIf="h.nbre_etoile!=0">
-                                <img src="../../../../assets/{{h.nbre_etoile}}e.png" class="w-100  " alt="">
-                            </div>
                             <h6 class="card-title font-weight-bold ">{{h.titre}}</h6>
-                            
-                            
+                            <span [ngClass]="{'hidden':!isReserve(h._id)}">
+                                <button type="button" class="btn btn-outline-secondary " (click)="reserveBooking({ih:h._id,iv:h.ville_id},fluid)" [ngClass]="{'disabled':this.disabled}" mdbWavesEffect><span style="font-size:10px;">Reserver</span></button>
+                            </span>
+                            <span [ngClass]="{'hidden':isReserve(h._id)}">
+                                <button type="button" class="btn btn-outline-danger " (click)="isAnnule(h._id)"  mdbWavesEffect><span style="font-size:10px;" >Anniler</span></button>
+                            </span>
                             <!--Text-->
+                        </div>
+                        <div class="card-footer">
+                            <span class="float-left ">
+                            <div class="position-relative mb-0" *ngIf="h.nbre_etoile!=0">
+                                <ul class="rating">
+                                    <span *ngFor="let item of createRange(h.nbre_etoile);let i=index">
+                                        <li>
+                                            <i class="fa fa-star" ></i>
+                                        </li>
+                                    </span>
+                                </ul>    
+                            </div>
+                            <div *ngIf="h.nbre_etoile==0">
+                                <p style="font-size:14px" class="font-weight-bold">
+                                        Maison d'hote
+                                </p>   
+                            </div>
+                            </span>
+                            <span class="float-right">
+                                <a class="" data-toggle="tooltip"  *ngIf="h.nbre_etoile!=0" mdbTooltip="Hotel" placement="top" mdbWavesEffect>
+                                    <i class="fa fa-h-square  grey-text ml-3"></i>
+                                </a>
+                                <a class="" data-toggle="tooltip" *ngIf="h.nbre_etoile==0" mdbTooltip="Maison d'hote" placement="top" mdbWavesEffect>
+                                        <i class="fa fa-home grey-text ml-3"></i>
+                                </a>
+                            </span>
                         </div>
                     </div>   
                     </div>
@@ -61,41 +95,15 @@
                 </button>
             </div>
             <div class="modal-body">
+                <img src="http://localhost:5000/upload/{{this.selectedHotel.image}}" class="w-75" alt="">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente magnam, sunt, ea dolore
                     eum quod. Minima fugiat enim aut soluta est reprehenderit reiciendis quos, qui, amet
                     possimus laborum assumenda voluptate.
                 </p>
-
-                <ul class="list-group z-depth-0">
-                    <li class="list-group-item justify-content-between">
-                        Cras justo odio
-                        <span class="badge badge-primary badge-pill">14</span>
-                    </li>
-                    <li class="list-group-item justify-content-between">
-                        Dapibus ac facilisis in
-                        <span class="badge badge-primary badge-pill">2</span>
-                    </li>
-                    <li class="list-group-item justify-content-between">
-                        Morbi leo risus
-                        <span class="badge badge-primary badge-pill">1</span>
-                    </li>
-                    <li class="list-group-item justify-content-between">
-                        Cras justo odio
-                        <span class="badge badge-primary badge-pill">14</span>
-                    </li>
-                    <li class="list-group-item justify-content-between">
-                        Dapibus ac facilisis in
-                        <span class="badge badge-primary badge-pill">2</span>
-                    </li>
-                    <li class="list-group-item justify-content-between">
-                        Morbi leo risus
-                        <span class="badge badge-primary badge-pill">1</span>
-                    </li>
-                </ul>
             </div>
             <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-secondary waves-light" data-dismiss="modal" (click)="fluid.hide()" mdbWavesEffect>Close</button>
-                <button type="button" class="btn btn-primary waves-light" mdbWavesEffect (click)="reserveBooking(this.selectedHotel._id,fluid)">Reserver</button>
+                <button type="button" class="btn btn-primary waves-light" mdbWavesEffect (click)="reserveBooking({ih:this.selectedHotel._id,iv:this.selectedHotel.ville_id},fluid)">Reserver</button>
             </div>
         </div>
     </div>

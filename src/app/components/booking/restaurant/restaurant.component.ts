@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewContainerRef} from '@angular/core';
 import { BookingService } from '../../../services/booking.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 declare var $ :any;
 @Component({
   selector: 'app-restaurant',
@@ -15,7 +16,8 @@ export class RestaurantComponent implements OnInit {
   listSelect=JSON.parse(localStorage.getItem("listSelect")) || [];
   selectedItemId:any=this.listVille[0];
   selectedResto:any ={titre:""};
-  constructor(private bookingService:BookingService) { }
+  reserveResto:any[]=JSON.parse(localStorage.getItem("_rrb")) || [];
+  constructor(private bookingService:BookingService , private toastrManager: ToastsManager,vcr: ViewContainerRef) { }
 
   ngOnInit() {
     var winH=$(window).height();
@@ -31,5 +33,35 @@ export class RestaurantComponent implements OnInit {
   getRestoModal(resto){
     this.selectedResto=resto;
   }
+  reserveBooking(reseve,fluid){
+    this.reserveResto.push(reseve);
+    localStorage.setItem('_rrb',JSON.stringify(this.reserveResto));
+    fluid.hide();
+    let options = { showCloseButton: true, tapToDismiss: true ,positionClass:'toast-top-left' };
+      this.toastrManager.success('success.',null,options);
+
+  }
+  isReserve(hebergement){  
+    var isReserve:boolean=true;
+    if(this.reserveResto.length!=0){
+      for(var i = 0; i < this.reserveResto.length; i++){
+        if(hebergement==this.reserveResto[i].ir){
+          isReserve=false;
+          
+          break;
+        }
+     }
+    }
+    return isReserve ;
+  }
+  isAnnule(hebergement){
+    for(var i = 0; i < this.reserveResto.length; i++){
+      if(hebergement==this.reserveResto[i].ir){
+        this.reserveResto.splice(i,1);
+        localStorage.removeItem("_rrb");
+        localStorage.setItem('_rrb',JSON.stringify(this.reserveResto));
+      }
+  }
+}
 
 }

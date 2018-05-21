@@ -10,7 +10,7 @@
 <div class="flex-center container bg-white hidden-md-down rounded mt350" >
 <form class="form-inline text-center" [formGroup]='villeForm' autocomplete="new-password" #resForm="ngForm" (submit)="onBookingSubmit(resForm)" novalidate >
 <div class="md-form pt-4">
-    <input type="text" class="form-control col mr-5 input-header" id="defaultForm-email" formControlName='search' [(value)]="bt.origin " (keyup)="toggeleDropDown()" placeholder=" Destination" name="Destination">
+    <input type="text" class="form-control col mr-5 input-header" id="defaultForm-email" formControlName='search' (input)="bt.origin = $event.target.value" [(value)]="bt.origin " (keyup)="toggeleDropDown()" placeholder=" Destination" name="Destination">
     <label for="defaultForm-email"></label>
     <div clickOutside  *ngIf="this.showDropDown" >
         <div  class="ville-container-dropdown">

@@ -70,6 +70,7 @@ export class BookingComponent implements OnInit {
     if(this._bt._rd>0){
     this._bt._rd--;
     ville.days=1;
+    ville.isReserve=false;
     ville.dateDepart=dateDepart.toLocaleDateString()
     ville.dateArrive=dateArrive.toLocaleDateString()
     this.listRoute.push( {location:{lat:ville.lat,lng:ville.long}});

@@ -29,10 +29,28 @@ export class BookingService {
     return this.http.get('http://localhost:3000/api/resto/'+resto,{headers:headers,withCredentials:true})
     .map(res => res.json());
   }
+  getRestoRes(hotel){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/api/restores/'+hotel,{headers:headers,withCredentials:true})
+    .map(res => res.json());
+  }
   getVisite(visite){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.get('http://localhost:3000/api/visite/'+visite,{headers:headers,withCredentials:true})
+    .map(res => res.json());
+  }
+  getVisiteRes(hotel){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/api/visiteres/'+hotel,{headers:headers,withCredentials:true})
+    .map(res => res.json());
+  }
+  ReserveUser(user:any){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/api/reserve',user,{headers:headers,withCredentials:true})
     .map(res => res.json());
   }
 }

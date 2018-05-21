@@ -85,7 +85,7 @@ export class NavbarComponent implements OnInit {
     }
   }
   logout(){
-    localStorage.clear();
+    this.authService.logout();
     let options = { showCloseButton: true, tapToDismiss: true };
     this.toastrManager.success('déconnecté',null,options);
     //this.router.navigate(['']);

@@ -1,4 +1,5 @@
 <div class="container mt-5">
+  <form >
   <div class="row">
     <div class="col-md-3">
         <a role="button" class="btn btn-warning waves-light" routerLink="/Booking" mdbWavesEffect> <i class="fa fa-arrow-left fa-4x" aria-hidden="true"></i><span class="ml-3">Modifier</span></a>
@@ -52,12 +53,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>VILLE</td>
-            <td>PRIX</td>
-            <td>@mdo</td>
-            <td>PRIX</td>
+          <tr *ngFor="let r of resto;let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{r.titre}}</td>
+            <ng-container  *ngFor="let ls of listSelect;let i=index">
+                    <td *ngIf="ls._id==r.ville_id">
+                        {{ls.days}}
+                    </td>
+                    <td *ngIf="ls._id==r.ville_id">{{ls.dateDepart}}</td>
+                    <td *ngIf="ls._id==r.ville_id">{{ls.nom}}</td>
+            </ng-container>
             <td>@mdo</td>
           </tr>
         </tbody>
@@ -77,12 +82,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>VILLE</td>
-              <td>PRIX</td>
-              <td>@mdo</td>
-              <td>PRIX</td>
+            <tr *ngFor="let v of visite;let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{v.titre}}</td>
+              <ng-container  *ngFor="let ls of listSelect;let i=index">
+                      <td *ngIf="ls._id==v.ville_id">
+                          {{ls.days}}
+                      </td>
+                      <td *ngIf="ls._id==v.ville_id">{{ls.dateDepart}}</td>
+                      <td *ngIf="ls._id==v.ville_id">{{ls.nom}}</td>
+              </ng-container>
               <td>@mdo</td>
             </tr>
           </tbody>
@@ -115,7 +124,52 @@
         </div>
         <div class="row mt-4 mb-2">
           <div class="col-md-12 text-center">
-              <button type="button" class="btn btn-primary waves-light" mdbWavesEffect> Enregistrez votre voyage</button>
+              <button type="button" class="btn btn-primary waves-light"  (click)='reserve(formLogin)' mdbWavesEffect> Enregistrez votre voyage</button>
           </div>
         </div>
+      </form>  
+</div>
+<div mdbModal #formLogin="mdb-modal" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+      <!--Content-->
+      <div class="modal-content">
+          <form #loginFormRes="ngForm" (submit)="onLoginSubmitRes(formLoginRes,formLogin)">
+          <!--Header-->
+          <div class="modal-header light-blue darken-3 white-text">
+              <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
+              <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="formLogin.hide()">
+                  <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <!--Body-->
+          <div class="modal-body">
+              <div class="md-form form-sm">
+                  <i class="fa fa-envelope prefix"></i>
+                  <input mdbActive type="text"   [(ngModel)]="userLogin1.email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" id="form302" class="form-control">
+                  <label for="form302">Your email</label>
+              </div>
+
+              <div class="md-form form-sm">
+                  <i class="fa fa-lock prefix"></i>
+                  <input mdbActive type="password"  [(ngModel)]="userLogin1.password" name="password" id="form312" class="form-control">
+                  <label for="form312">Your password</label>
+              </div>
+
+              <div class="text-center mt-2">
+                  <button class="btn btn-info waves-light" mdbRippleRadius>Log in <i class="fa fa-sign-in ml-1"></i></button>
+              </div>
+
+          </div>
+          <!--Footer-->
+          <div class="modal-footer">
+              <div class="options text-center text-md-right mt-1">
+                  <p>Not a member? <a href="#">Sign Up</a></p>
+                  <p>Forgot <a href="#">Password?</a></p>
+              </div>
+              <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="formLogin.hide()" mdbRippleRadius>Close</button>
+          </div>
+      </form>
+      </div>
+      <!--/.Content-->
+  </div>
 </div>

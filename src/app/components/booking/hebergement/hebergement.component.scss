@@ -9,6 +9,29 @@
     cursor: pointer;
     box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.19), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
 }
+.rating {
+    list-style-type: none;
+    padding: 0;
+    color: #ffa000
+}
+.rating li {
+    display: inline-block;
+}
+.card-title {
+     margin-bottom: 0 !important; 
+}
+.btn[class*="btn-outline-"]{
+    padding: 0.4rem 0.4rem;
+}
+.hidden {
+    display: none;
+}
+.disabled :disabled {
+    background: #ddddddfc;
+    pointer-events: none;
+    cursor: not-allowed; 
+}
+
 .toast-top-center {  
     top: 12px; 
     left: 50%; 

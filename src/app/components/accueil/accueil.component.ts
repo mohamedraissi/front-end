@@ -50,6 +50,7 @@ export class AccueilComponent implements OnInit {
     return this.villeForm.value.search;
   }
   onBookingSubmit(booking){
+    localStorage.removeItem("_bt");
     var date1 = new Date(this.villeForm.value.depart);
     var date2 = new Date(this.villeForm.value.arrive);
     var timeDiff = Math.abs(date2.getTime() - date1.getTime());

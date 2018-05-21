@@ -26,6 +26,12 @@
                             <div class="card-body">
                                 <!--Title-->
                                 <h6 class="card-title font-weight-bold ">{{r.titre}}</h6>
+                                <span [ngClass]="{'hidden':!isReserve(r._id)}">
+                                    <button type="button" class="btn btn-outline-secondary " (click)="reserveBooking({ir:r._id,iv:r.ville_id},fluid)"  mdbWavesEffect><span style="font-size:10px;">Reserver</span></button>
+                                </span>
+                                <span [ngClass]="{'hidden':isReserve(r._id)}">
+                                    <button type="button" class="btn btn-outline-danger " (click)="isAnnule(r._id)"  mdbWavesEffect><span style="font-size:10px;" >Anniler</span></button>
+                                </span>
                                 <!--Text-->
                             </div>
                         </div>   

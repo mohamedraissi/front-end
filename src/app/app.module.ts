@@ -34,7 +34,6 @@ import { VisiteComponent } from './components/booking/visite/visite.component';
 
 import { SearchFilterPipe } from './pipe/filter-pipe';
 import { ReserveComponent } from './components/booking/reserve/reserve.component';
-import { CustomOption } from './class/custom-option';
 
 
 
@@ -86,7 +85,7 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyB1Np5J4Vau658dG9QL6EDRWS4Dco3RvZI'
     }),
   ],
-  providers: [ValidateService,AuthService, AuthGuard,BookingService,DirectionsMapDirective, {provide: ToastModule, useClass: CustomOption},],
+  providers: [ValidateService,AuthService, AuthGuard,BookingService,DirectionsMapDirective,],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ]
 })

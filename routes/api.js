@@ -5,11 +5,52 @@ var User = require('../models/user');
 var Ville = require('../models/ville');
 var Marker = require('../models/marker');
 var Token = require('../models/token');
+var Booking = require('../models/booking');
+var Info = require('../models/info');
 var nodemailer=require('nodemailer');
 var crypto = require('crypto');
 var passport =require('passport');
 
 
+router.post('/reserve',(req,res) =>{
+  console.log(req.body)
+  var booking = new Booking({
+    date_debut:req.body[1],
+    date_fin:req.body[2],
+    days:req.body[3],
+    marker_id:req.body[4],
+    user_id:req.body[0],
+  });
+  console.log()
+  booking.save((err) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+          res.json({success:true,msg:"yes"});
+        }
+    }
+  );
+  var info = new Info({
+    info:req.body[5],
+    booking_id:booking._id,
+  });
+  info.save((err) => {
+    if (err) {
+      console.log(err);
+    }
+    else {
+        res.json({success:true,msg:"yes"});
+      }
+     
+  }
+);
+});
+router.get("/userRes",(req,res) => {
+  Booking.find({}).populate('marker_id').exec(function(error, booking) {
+    res.json(booking);
+  });
+});
 router.post("/user",(req,res) => {
     var user = new User(
       {
@@ -156,9 +197,36 @@ router.post("/user",(req,res) => {
     });
     
   });
+  router.get('/restores/:r' , (req,res) => {
+    var resto=req.params.r.split(',');
+    Marker.find({'_id':{ $in:resto}}).exec((err,marker)=>{
+      if (err) {
+        console.log(err);
+      } 
+      else{
+        return res.status(200).json(marker);
+      }
+      
+    });
+    
+  });
+
   router.get('/visite/:v' , (req,res) => {
     var visite=req.params.v.split(',');
     Marker.find({$and:[{'ville_id':{ $in:visite}},{'cat_id':{$eq:'5a92bc8debbe9925348d3f4e'}}]}).exec((err,marker)=>{
+      if (err) {
+        console.log(err);
+      } 
+      else{
+        return res.status(200).json(marker);
+      }
+      
+    });
+    
+  });
+  router.get('/visiteres/:v' , (req,res) => {
+    var visite=req.params.v.split(',');
+    Marker.find({'_id':{ $in:visite}}).exec((err,marker)=>{
       if (err) {
         console.log(err);
       } 

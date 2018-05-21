@@ -22,12 +22,16 @@ export class AuthService {
   }
     storeUserData(user){
       localStorage.setItem('currentUser.email', user.email);
+      localStorage.setItem('_token', user._id);
+
     }
   loggedIn():boolean{
     return localStorage.getItem('currentUser.email') != undefined;
   }
   logout(){
-    localStorage.clear();
+    localStorage.removeItem('currentUser.email');
+    localStorage.removeItem('_token');
+
   }
   getUser(){
     let headers = new Headers();
