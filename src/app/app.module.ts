@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { BookingService } from './services/booking.service';
@@ -34,6 +35,8 @@ import { VisiteComponent } from './components/booking/visite/visite.component';
 
 import { SearchFilterPipe } from './pipe/filter-pipe';
 import { ReserveComponent } from './components/booking/reserve/reserve.component';
+import { DetailComponent } from './components/user/detail/detail.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 
@@ -42,11 +45,14 @@ const appRoutes: Routes = [
   { path: '', component: AccueilComponent },
   { path: 'login', component: LoginComponent },
   { path: 'user', component: UserComponent , canActivate:[AuthGuard] },
+  { path: 'Gallery', component: GalleryComponent  },
   { path: 'Booking', component: BookingComponent  },
   { path: 'Booking/Hebergement', component: HebergementComponent  },
   { path: 'Booking/Restaurant', component: RestaurantComponent  },
   { path: 'Booking/Visite', component: VisiteComponent  },
   { path: 'Booking/reserver', component: ReserveComponent  },
+  { path: 'user/:id', component: DetailComponent  },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
@@ -66,7 +72,10 @@ const appRoutes: Routes = [
     VisiteComponent,
     ClickOutsideDirective,
     SearchFilterPipe,
-    ReserveComponent
+    ReserveComponent,
+    DetailComponent,
+    PageNotFoundComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

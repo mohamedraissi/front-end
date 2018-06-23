@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const InfoSchema = new Schema({
 info:[{
     ville_id:{
-      type: Schema.Types.ObjectId, ref: 'User'
+      type: Schema.Types.ObjectId, ref: 'Ville'
     },
     days:{
       type:Number,

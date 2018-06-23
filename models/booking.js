@@ -10,10 +10,19 @@ const BookingSchema = new Schema({
     type: Date,
     require: true
   },
+  date_created:{
+    type: Date,
+    require: true
+  },
   
   days:{
     type:Number,
     require: true
+  },
+  etat:{
+    type:Boolean,
+    require: true,
+    default:false,
   },
 
   user_id: { type: Schema.Types.ObjectId, ref: 'User' },

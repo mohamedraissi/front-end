@@ -34,10 +34,10 @@
                             <!--Title-->
                             <h6 class="card-title font-weight-bold ">{{h.titre}}</h6>
                             <span [ngClass]="{'hidden':!isReserve(h._id)}">
-                                <button type="button" class="btn btn-outline-secondary " (click)="reserveBooking({ih:h._id,iv:h.ville_id},fluid)" [ngClass]="{'disabled':this.disabled}" mdbWavesEffect><span style="font-size:10px;">Reserver</span></button>
+                                <button type="button" class="btn btn-primary btn-md " (click)="reserveBooking({ih:h._id,iv:h.ville_id},fluid)" [ngClass]="{'disabled':this.disabled}" mdbWavesEffect><span style="font-size:10px;">Reserver</span></button>
                             </span>
                             <span [ngClass]="{'hidden':isReserve(h._id)}">
-                                <button type="button" class="btn btn-outline-danger " (click)="isAnnule(h._id)"  mdbWavesEffect><span style="font-size:10px;" >Anniler</span></button>
+                                <button type="button" class="btn btn-danger btn-md" (click)="isAnnule(h._id)"  mdbWavesEffect><span style="font-size:10px;" >Anniler</span></button>
                             </span>
                             <!--Text-->
                         </div>
@@ -95,8 +95,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img src="http://localhost:5000/upload/{{this.selectedHotel.image}}" class="w-75" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente magnam, sunt, ea dolore
+                <img src="http://localhost:5000/upload/{{this.selectedHotel.image}}" class="w-100" alt="">
+                <p class="mt-4 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente magnam, sunt, ea dolore
                     eum quod. Minima fugiat enim aut soluta est reprehenderit reiciendis quos, qui, amet
                     possimus laborum assumenda voluptate.
                 </p>

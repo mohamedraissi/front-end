@@ -5,12 +5,12 @@
                     <div class="col-md-4 block-overflow ">
                             <div class="card bg-white text-center z-depth-2 mb-3 card-hover"  *ngFor="let ville of villes"  (click)="addRoute(ville)">
                                     <div class="card-body">
-                                        <div class="row">
+                                        <div class="row align-items-center">
                                             <div class="col-3">
                                             <img src="http://localhost:5000/upload/{{ville.image}}" alt="">
                                         </div>
                                         <div class="col-9">
-                                            <p class=" h6">{{ville.nom}}</p>
+                                            <p class=" h6 align-middle">{{ville.nom}}</p>
                                             
                                         </div>
                                         </div>
@@ -34,17 +34,20 @@
                               </div>
                             </div>
                           </div>
-                        <div class="row pr-3 mb-2" *ngIf="isRouteActive"  >
+                        <div class="row pr-3 mb-2 mt-3" *ngIf="isRouteActive"  >
                             <div class="col-4">
-                                <a class="btn-floating yellow waves-light" mdbWavesEffect>
-                                    <i class="fa fa-car black-text" aria-hidden="true"></i>
+                                <a class="btn-floating blue waves-light" mdbWavesEffect>
+                                    <i class="fa fa-car" aria-hidden="true"></i>
                                 </a>
                             </div>
-                        <div class="col-8" id="total0">    
+                            <div class="col-2">
+                                    <img src="../../../assets/flech.png" class="w-50" alt="">
+                                </div >
+                        <div class="col-6 font-weight-bold" id="total0">    
                         </div>
                         </div>
                         <div *ngFor="let list of listSelect;let  i= index">
-                            <div class="row pr-3 mb-2"  >
+                            <div class="row pr-3 "  >
                             <div class="col-4 ">
                                     <div class="card block-cal card-hover" [ngStyle]="{'height':this.bl}" >
                                         <div class="card-body">
@@ -64,8 +67,8 @@
                                         <p class=" h6" style="text-align:left;">{{list.nom}}</p>
                                         <p class="" style="margin-top:-20px;text-align:left;">{{list.gouvernorat}} </p>
                                         <p style="margin-top:-5px;" class="text-left">
-                                            <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="addDay(i)" mdbWavesEffect>+</button> 
-                                            <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="subDay(i)" mdbWavesEffect>-</button>
+                                            <button type="button" class="btn btn-primary waves-light" (click)="addDay(i)" mdbWavesEffect>+</button> 
+                                            <button type="button" class="btn btn-primary waves-light" (click)="subDay(i)" mdbWavesEffect>-</button>
                                             <span class="text-right"> 
                                                 {{list.days}}jour(s)/{{list.days}}nuit(s)
                                             </span>
@@ -76,17 +79,29 @@
                                 </div>
                               </div>
                         </div>
-                        <div class="row pr-3 mb-2">
+                        <div class="row pr-3 mb-2 mt-3">
                                     <div class="col-4">
                                         <a class="btn-floating btn-xs indigo waves-light" mdbWavesEffect>
                                             <i class="fa fa-car" aria-hidden="true"></i>
                                         </a>
                                     </div>
-                                    <div class="col-8" id="total{{i+1}}">
-                                            
+                                    <div class="col-2">
+                                        <img src="../../../assets/flech.png" class="w-50" alt="">
+                                    </div >
+                                    <div class="col-6 font-weight-bold" id="total{{i+1}}">
+
                                     </div>
                         </div>
                         </div>
+                                <div class="card blockD card-hover">
+                                <div class="card-body">
+                                  <div class="row mt-4">
+                                  <div class="col-12">
+                                      <p class=" h6">Retour: {{this._bt.origin}}</p>
+                                  </div>
+                                  </div>
+                                </div>
+                              </div>
                     </div>
                     </div>
                 </div>

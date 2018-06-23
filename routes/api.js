@@ -13,13 +13,14 @@ var passport =require('passport');
 
 
 router.post('/reserve',(req,res) =>{
-  console.log(req.body)
+  console.log(req.body[0])
   var booking = new Booking({
     date_debut:req.body[1],
     date_fin:req.body[2],
     days:req.body[3],
     marker_id:req.body[4],
     user_id:req.body[0],
+    date_created:req.body[6],
   });
   console.log()
   booking.save((err) => {
@@ -39,15 +40,21 @@ router.post('/reserve',(req,res) =>{
     if (err) {
       console.log(err);
     }
-    else {
-        res.json({success:true,msg:"yes"});
-      }
-     
   }
 );
 });
-router.get("/userRes",(req,res) => {
-  Booking.find({}).populate('marker_id').exec(function(error, booking) {
+router.get("/userInfo/:id",(req,res) => {
+  Info.findOne({booking_id:req.params.id}).populate('booking_id').populate('info.ville_id').exec(function(error, info) {
+    res.json(info);
+  });
+});
+router.get("/oneRes/:id",(req,res) => {
+  Booking.findOne({_id:req.params.id}).populate('marker_id').exec(function(error, booking) {
+    res.json(booking);
+  });
+});
+router.get("/userRes/:id",(req,res) => {
+  Booking.find({user_id:req.params.id}).populate('marker_id').exec(function(error, booking) {
     res.json(booking);
   });
 });

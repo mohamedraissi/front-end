@@ -27,10 +27,10 @@
                                 <!--Title-->
                                 <h6 class="card-title font-weight-bold ">{{r.titre}}</h6>
                                 <span [ngClass]="{'hidden':!isReserve(r._id)}">
-                                    <button type="button" class="btn btn-outline-secondary " (click)="reserveBooking({ir:r._id,iv:r.ville_id},fluid)"  mdbWavesEffect><span style="font-size:10px;">Reserver</span></button>
+                                    <button type="button" class="btn btn-primary btn-md " (click)="reserveBooking({ir:r._id,iv:r.ville_id},fluid)"  mdbWavesEffect><span style="font-size:10px;">Reserver</span></button>
                                 </span>
                                 <span [ngClass]="{'hidden':isReserve(r._id)}">
-                                    <button type="button" class="btn btn-outline-danger " (click)="isAnnule(r._id)"  mdbWavesEffect><span style="font-size:10px;" >Anniler</span></button>
+                                    <button type="button" class="btn  btn-danger btn-md " (click)="isAnnule(r._id)"  mdbWavesEffect><span style="font-size:10px;" >Anniler</span></button>
                                 </span>
                                 <!--Text-->
                             </div>
@@ -62,37 +62,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente magnam, sunt, ea dolore
+                <img src="http://localhost:5000/upload/{{this.selectedResto.image}}" class="w-100" alt="">
+                <p class="mt-4 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente magnam, sunt, ea dolore
                     eum quod. Minima fugiat enim aut soluta est reprehenderit reiciendis quos, qui, amet
                     possimus laborum assumenda voluptate.
                 </p>
 
-                <ul class="list-group z-depth-0">
-                    <li class="list-group-item justify-content-between">
-                        Cras justo odio
-                        <span class="badge badge-primary badge-pill">14</span>
-                    </li>
-                    <li class="list-group-item justify-content-between">
-                        Dapibus ac facilisis in
-                        <span class="badge badge-primary badge-pill">2</span>
-                    </li>
-                    <li class="list-group-item justify-content-between">
-                        Morbi leo risus
-                        <span class="badge badge-primary badge-pill">1</span>
-                    </li>
-                    <li class="list-group-item justify-content-between">
-                        Cras justo odio
-                        <span class="badge badge-primary badge-pill">14</span>
-                    </li>
-                    <li class="list-group-item justify-content-between">
-                        Dapibus ac facilisis in
-                        <span class="badge badge-primary badge-pill">2</span>
-                    </li>
-                    <li class="list-group-item justify-content-between">
-                        Morbi leo risus
-                        <span class="badge badge-primary badge-pill">1</span>
-                    </li>
-                </ul>
+                
             </div>
             <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-secondary waves-light" data-dismiss="modal" (click)="fluid.hide()" mdbWavesEffect>Close</button>

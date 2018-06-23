@@ -1,19 +1,19 @@
 
 <!--Section: Testimonials v.1-->
-<section class="section pb-3 text-center container ">
+<section class="section pb-3 text-center container mt-5 ">
   <div class="row">
       <!--Grid column-->
       <div class="col-lg-4 col-md-12 mb-r">
 
           <!--Card-->
-          <div class="card testimonial-card">
+          <div class="card testimonial-card position-fixed">
 
               <!--Background color-->
               <div class="card-up blue lighten-2">
               </div>
 
               <!--Avatar-->
-              <div class="avatar"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" class="rounded-circle img-responsive">
+              <div class="avatar"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg" class="rounded-circle img-responsive">
               </div>
 
               <div class="card-body">
@@ -21,14 +21,50 @@
                   <h4 class="card-title mt-1">{{this.user.nom}} {{this.user.prenom}}</h4>
                   <hr>
                   <!--Quotation-->
-                  <p><i class="fa fa-quote-left"></i> Neque cupiditate assumenda in maiores repudiandae mollitia architecto.</p>
+                  <p class="float-left" style="clear:both"><i class="fa fa-mobile"></i> <strong>Télephone:</strong>{{this.user.tel}}.</p>
+                  <p class="float-left" style="clear:both"><i class="fa fa-map-marker"></i> <strong>Adresse:</strong>{{this.user.adresse}}.</p>
+                  <p class="float-left" style="clear:both"><i class="fa fa-envelope "></i> <strong>Email:</strong>{{this.user.email}}.</p>
               </div>
 
           </div>
           <!--Card-->
 
       </div>
-
+      <div class="col-md-8">
+    <h1>Liste de réservation</h1>   
+    <div *ngIf="booking.length!=0">
+ 
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>date de réservation</th>
+                <th>date de debut</th>
+                <th>date de fin</th>
+                <th>jour(s)</th>
+                <th>Etat</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let b of booking;let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{date(b.date_created)}}</td>
+                <td>{{date(b.date_debut)}}</td>
+                <td>{{date(b.date_fin)}}</td>
+                <td>{{b.days}}</td>
+                <td><span class="badge badge-warning">en attente</span></td>
+                <td>
+                    <a role="button" class="btn btn-primary btn-sm waves-light" [routerLink]="['/user/',b._id]" mdbTooltip="Detail" placement="bottom" mdbWavesEffect><i class="fa fa-info" aria-hidden="true"></i></a>
+                    <a role="button" class="btn btn-danger btn-sm waves-light" mdbTooltip="Supprimer" placement="bottom"mdbWavesEffect><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>  
+                             
+      </div>
 
   </div>
 

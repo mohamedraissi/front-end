@@ -27,10 +27,10 @@
                             <!--Title-->
                             <h6 class="card-title font-weight-bold ">{{v.titre}}</h6>
                             <span [ngClass]="{'hidden':!isReserve(v._id)}">
-                                <button type="button" class="btn btn-outline-secondary " (click)="reserveBooking({ivs:v._id,iv:v.ville_id},fluid)"  mdbWavesEffect><span style="font-size:10px;">Reserver</span></button>
+                                <button type="button" class="btn  btn-primary btn-md" (click)="reserveBooking({ivs:v._id,iv:v.ville_id},fluid)"  mdbWavesEffect><span style="font-size:10px;">Reserver</span></button>
                             </span>
                             <span [ngClass]="{'hidden':isReserve(v._id)}">
-                                <button type="button" class="btn btn-outline-danger " (click)="isAnnule(v._id)"  mdbWavesEffect><span style="font-size:10px;" >Anniler</span></button>
+                                <button type="button" class="btn  btn-danger btn-md " (click)="isAnnule(v._id)"  mdbWavesEffect><span style="font-size:10px;" >Anniler</span></button>
                             </span>
                             <!--Text-->
                         </div>

@@ -27,9 +27,9 @@ export class NavbarComponent implements OnInit {
     password:"",
     comfirmPass:"",
    }
-   userlogged={
-     email: "" ,
-   };
+   
+    e:string= localStorage.getItem("currentUser.email") || "" ;
+   
   constructor(private validate:ValidateService,
               private authService:AuthService,
               private router:Router,
@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
 
     
-   //console.log(this.userlogged.email)
+   console.log(this.e)
   }
    onRegisterSubmit({value,valid},f){
      if(this.validate.validateRegister(value)){
@@ -68,7 +68,8 @@ export class NavbarComponent implements OnInit {
         if(data.success){
           this.authService.storeUserData(data.user)
           this.authService.getUser().subscribe(data => {
-            this.userlogged.email=data.user.email;
+            this.e=data.user.email;
+            console.log(data.user.email)
            },err => {}
        
          );

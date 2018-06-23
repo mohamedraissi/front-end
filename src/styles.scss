@@ -2,7 +2,7 @@
 .navbar.scrolling-navbar.top-nav-collapse {
     padding-top: 5px;
     padding-bottom: 5px;
-    background: #8e35dc !important;
+    background: #0277bd !important;
 }
 header .navbar{
     padding-left:  10% !important;
@@ -12,7 +12,7 @@ header .navbar{
     background-color: rgba(25, 13, 28, 0.494) !important;
 }
 .indigo {
-    background-color: #8e35dc !important;
+    background-color: #0277bd !important;
 }
 .modal-open .modal {
     overflow-x: hidden;
@@ -30,4 +30,18 @@ header .navbar{
     font-size: 1rem;
     line-height: 47px;
     text-align: center;
+}
+.mdb-color {
+    background-color: #263238 !important;
+}
+.modal-dialog.cascading-modal .modal-header {
+    margin: -4rem 0rem 1rem 0rem;
+}
+@font-face{
+    font-family: laPolice;
+    src:url(assets/coolveticarg.ttf);
+
+}
+h1{
+    font-family: laPolice;
 }

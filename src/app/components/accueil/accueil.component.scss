@@ -1,5 +1,5 @@
 .view {
-    background: url("../../../assets/images/travel.jpg")no-repeat center center;
+    background: url("../../../assets/images/sea.jpg")no-repeat center center ;
     background-size: cover;
 }  
 .intro {
@@ -23,11 +23,11 @@
 }
 .bg-hover:hover{
     color:white !important;
-    background: #8e35dc;
+    background: #0277bd;
     cursor: pointer;
 }
 .bg-hover i{
-    color:#8e35dc;
+    color:#0277bd;
 }
 .bg-hover:hover i{
     color:#ffffff;
@@ -42,7 +42,7 @@
     }
 }
 .img1-1{
-    background: url('../../../assets/images/salt-lake-250806_1920.jpg') no-repeat center center ;
+    background: url('../../../assets/images/great-mosque.jpg') no-repeat center center ;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -56,7 +56,7 @@
 
 
 .img2-1{
-    background: url('../../../assets/images/no-person-3270204_1920.jpg') no-repeat center center ;
+    background: url('../../../assets/images/holiday.jpg') no-repeat center center ;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -72,7 +72,7 @@
     height: 500px;
 }
 .img4-1{
-    background: url('../../../assets/images/tunisia-733595_1920.jpg') no-repeat center center ;
+    background: url('../../../assets/images/roman.jpg') no-repeat center center ;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -98,7 +98,7 @@
     margin-top:-300px;
 }
 .img3-2{
-    background: url('../../../assets/images/no-person-3270204_1920.jpg') no-repeat center center ;
+    background: url('../../../assets/images/minaret.jpg') no-repeat center center ;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -136,7 +136,7 @@ hr {
     margin-bottom: 1rem;
     border: 0;
     width: 60px;
-    border-top: 2px solid #8e35dc ;
+    border-top: 2px solid #0277bd ;
   }
   @media only screen and (max-width:767px) {
     .img2-2,.img4-2{
@@ -166,5 +166,9 @@ hr {
 }
 .ville:hover{
     background: #8e35dc85
+}
+path:hover{
+    
+    fill: rgb(245, 246, 247);
 }
  

@@ -1,7 +1,7 @@
 <header *ngIf="this.router.url==='/'">
     <mdb-navbar SideClass="navbar  fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [containerInside]="false" >
         <logo>
-            <a class="logo navbar-brand" href="#"><strong><img src="../../../assets/images/logo.png" style="width:70px"></strong></a>
+            <a class="logo navbar-brand" href="#"><strong><img src="../../../assets/images/logo2.png" style="width:70px"></strong></a>
         </logo>
         <links>
             <ul class="navbar-nav mr-auto">
@@ -26,7 +26,7 @@
             </ul>
             <div class="btn-group" *ngIf="authService.loggedIn()" dropdown>
                 <a dropdownToggle role="button" class="text-white dropdown-toggle waves-light" mdbRippleRadius>
-                    {{this.userlogged.email}}
+                    {{e}}
                 </a>
                 <div class="dropdown-menu dropdown-primary">
                     <a class="dropdown-item" href="#">Action</a>
@@ -44,7 +44,7 @@
 <header header *ngIf="this.router.url!=='/'" >
     <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo scrolling-navbar">
         <logo>
-          <a class="logo navbar-brand" href="#"><strong><img src="../../../assets/images/logo.png" style="width:70px"></strong></a>
+          <a class="logo navbar-brand" href="#"><strong><img src="../../../assets/images/logo2.png" style="width:70px"></strong></a>
         </logo>
         <links>
             <ul class="navbar-nav mr-auto" >
@@ -68,7 +68,7 @@
             </ul>
             <div class="btn-group" *ngIf="authService.loggedIn()" dropdown>
                 <a dropdownToggle role="button" class="text-white dropdown-toggle waves-light" mdbRippleRadius>
-                    {{this.userlogged.email}}
+                    {{e}}
                 </a>
                 <div class="dropdown-menu dropdown-primary">
                     <a class="dropdown-item" href="#">Action</a>
@@ -91,7 +91,7 @@
                         
                         <!--Header-->
                         <div class="modal-header light-blue darken-3 white-text">
-                            <h4 class="title"><i class="fa fa-user-plus"></i> Register</h4>
+                            <h4 class="title"><i class="fa fa-user-plus"></i> Registre</h4>
                             <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide()">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -162,16 +162,16 @@
                                 les champs sont obligatoire
                             </div>
                             <div class="text-center mt-2">
-                                <button class="btn btn-info" type="submit" > save </button>
+                                <button class="btn btn-info" type="submit" > enregistrer </button>
                             </div>
                         </form>            
                         </div>
                         <!--Footer-->
                         <div class="modal-footer">
                             <div class="options text-center text-md-right mt-1">
-                                <p>Already have an account? <a href="#" (click)="formLogin.show();form.hide()">Log In</a></p>
+                                <p>Vous avez déjà un compte ? <a href="#" (click)="formLogin.show();form.hide()">S'identifier</a></p>
                             </div>
-                            <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form.hide()" mdbRippleRadius>Close</button>
+                            <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form.hide()" mdbRippleRadius>Fermer</button>
                         </div>
                     </div>
                     <!--/.Content-->
@@ -186,7 +186,7 @@
                 <form #loginForm="ngForm" (submit)="onLoginSubmit(loginForm,formLogin)">
                 <!--Header-->
                 <div class="modal-header light-blue darken-3 white-text">
-                    <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
+                    <h4 class="title"><i class="fa fa-user"></i> S'identifier</h4>
                     <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="formLogin.hide()">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -196,27 +196,27 @@
                     <div class="md-form form-sm">
                         <i class="fa fa-envelope prefix"></i>
                         <input mdbActive type="text"   [(ngModel)]="userLogin.email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" id="form30" class="form-control">
-                        <label for="form30">Your email</label>
+                        <label for="form30"> email</label>
                     </div>
     
                     <div class="md-form form-sm">
                         <i class="fa fa-lock prefix"></i>
                         <input mdbActive type="password"  [(ngModel)]="userLogin.password" name="password" id="form31" class="form-control">
-                        <label for="form31">Your password</label>
+                        <label for="form31">password</label>
                     </div>
     
                     <div class="text-center mt-2">
-                        <button class="btn btn-info waves-light" mdbRippleRadius>Log in <i class="fa fa-sign-in ml-1"></i></button>
+                        <button class="btn btn-info waves-light" mdbRippleRadius>S'identifier<i class="fa fa-sign-in ml-1"></i></button>
                     </div>
     
                 </div>
                 <!--Footer-->
                 <div class="modal-footer">
                     <div class="options text-center text-md-right mt-1">
-                        <p>Not a member? <a href="#">Sign Up</a></p>
-                        <p>Forgot <a href="#">Password?</a></p>
+                        <p>Pas un membre ? <a href="#">S'inscrire</a></p>
+                        <p>Oublié <a href="#">Password?</a></p>
                     </div>
-                    <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="formLogin.hide()" mdbRippleRadius>Close</button>
+                    <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="formLogin.hide()" mdbRippleRadius>Fermer</button>
                 </div>
             </form>
             </div>
@@ -232,7 +232,7 @@
             <form #contactForm="ngForm" (submit)="onRegisterSubmit(contactForm,formContact)">
             <!--Header-->
             <div class="modal-header light-blue darken-3 white-text">
-                <h4 class="title"><i class="fa fa-pencil"></i> Contact form</h4>
+                <h4 class="title"><i class="fa fa-pencil"></i>Formulaire de contact</h4>
                 <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="formContact.hide()">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -242,29 +242,29 @@
                 <div class="md-form form-sm">
                     <i class="fa fa-envelope prefix"></i>
                     <input mdbActive type="text" id="form19" class="form-control">
-                    <label for="form19">Your name</label>
+                    <label for="form19">Nom</label>
                 </div>
 
                 <div class="md-form form-sm">
                     <i class="fa fa-lock prefix"></i>
                     <input mdbActive type="password" id="form20" class="form-control">
-                    <label for="form20">Your email</label>
+                    <label for="form20">Email</label>
                 </div>
 
                 <div class="md-form form-sm">
                     <i class="fa fa-tag prefix"></i>
                     <input mdbActive type="text" id="form21" class="form-control">
-                    <label for="form21">Subject</label>
+                    <label for="form21">Sujet</label>
                 </div>
 
                 <div class="md-form form-sm">
                     <i class="fa fa-pencil prefix"></i>
                     <textarea mdbActive type="text" id="form8" class="md-textarea mb-0"></textarea>
-                    <label for="form8">Your message</label>
+                    <label for="form8">Message</label>
                 </div>
 
                 <div class="text-center mt-1-half">
-                    <button class="btn btn-info mb-2 waves-light" mdbRippleRadius>Send <i class="fa fa-send ml-1"></i></button>
+                    <button class="btn btn-info mb-2 waves-light" mdbRippleRadius>Envoyer <i class="fa fa-send ml-1"></i></button>
                 </div>
             </div>
         </form>

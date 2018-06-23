@@ -1,0 +1,118 @@
+<section class="section pb-3 text-center container mt-5 mb-5 ">
+  <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-r">
+
+          <!--Card-->
+          <div class="card testimonial-card position-fixed mb-1">
+
+              <!--Background color-->
+              <div class="card-up blue lighten-2">
+              </div>
+
+              <!--Avatar-->
+              <div class="avatar"><img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg" class="rounded-circle img-responsive">
+              </div>
+
+              <div class="card-body">
+                  <!--Name-->
+                  <h4 class="card-title mt-1">{{this.user.nom}} {{this.user.prenom}}</h4>
+                  <hr>
+                  <!--Quotation-->
+                  <p class="float-left" style="clear:both"><i class="fa fa-mobile"></i> <strong>Télephone:</strong>{{this.user.tel}}.</p>
+                  <p class="float-left" style="clear:both"><i class="fa fa-map-marker"></i> <strong>Adresse:</strong>{{this.user.adresse}}.</p>
+                  <p class="float-left" style="clear:both"><i class="fa fa-envelope "></i> <strong>Email:</strong>{{this.user.email}}.</p>
+              </div>
+
+          </div>
+          <!--Card-->
+
+      </div>
+      <div class="col-md-8">
+            <h2 class="text-left">HÉBERGEMENTS</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>NOM</th>
+                  <th>JOUR</th>
+                  <th>DATE</th>
+                  <th>VILLE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let m of markers;let i=index">
+                        <ng-container *ngIf="m.cat_id=='5a9a86bbac8e150da48477b0'">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{m.titre}}</td>
+                                <ng-container *ngFor="let info of info;let j=index">
+                                    <ng-container *ngIf="m.ville_id==info.ville_id._id"> 
+                                        <td>{{info.days}}</td>
+                                        <td>{{date(info.date_debut)}}</td>
+                                        <td>{{info.ville_id.nom}}</td>
+                                    </ng-container>
+                                </ng-container>
+                                
+                        </ng-container>
+                </tr> 
+              </tbody>
+            </table>  
+            <h2 class="text-left">RESTAURANTS</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>NOM</th>
+                  <th>JOUR</th>
+                  <th>DATE</th>
+                  <th>VILLE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let m of markers;let i=index">
+                        <ng-container *ngIf="m.cat_id=='5a8ae4eff1ef40206077534f'">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{m.titre}}</td>
+                                <ng-container *ngFor="let info of info;let j=index">
+                                    <ng-container *ngIf="m.ville_id==info.ville_id._id"> 
+                                        <td>{{info.days}}</td>
+                                        <td>{{date(info.date_debut)}}</td>
+                                        <td>{{info.ville_id.nom}}</td>
+                                    </ng-container>
+                                </ng-container>
+                                
+                        </ng-container>
+                </tr> 
+              </tbody>
+            </table>  
+            <h2 class="text-left">VISITES</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>NOM</th>
+                  <th>JOUR</th>
+                  <th>DATE</th>
+                  <th>VILLE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let m of markers;let i=index">
+                        <ng-container *ngIf="m.cat_id=='5a92bc8debbe9925348d3f4e'">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{m.titre}}</td>
+                                <ng-container *ngFor="let info of info;let j=index">
+                                    <ng-container *ngIf="m.ville_id==info.ville_id._id"> 
+                                        <td>{{info.days}}</td>
+                                        <td>{{date(info.date_debut)}}</td>
+                                        <td>{{info.ville_id.nom}}</td>
+                                    </ng-container>
+                                </ng-container>
+                                
+                        </ng-container>
+                </tr> 
+              </tbody>
+            </table>  
+      </div>
+  </div>
+</section>
